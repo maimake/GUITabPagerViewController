@@ -211,7 +211,13 @@
   CGRect frame = self.view.frame;
   frame.origin.y = 0;
   frame.size.height = [self headerHeight];
-  [self setHeader:[[GUITabScrollView alloc] initWithFrame:frame tabViews:tabViews tabBarHeight:[self headerHeight] tabColor:[self headerColor] backgroundColor:[self tabBackgroundColor]]];
+    
+    BOOL showBottomLine = YES;
+    if ([[self dataSource] respondsToSelector:@selector(showBottomLine)]) {
+        showBottomLine = [[self dataSource] showBottomLine];
+    }
+    [self setHeader:[[GUITabScrollView alloc] initWithFrame:frame tabViews:tabViews tabBarHeight:[self headerHeight] tabColor:[self headerColor] backgroundColor:[self tabBackgroundColor] showBottomLine:showBottomLine]];
+    
   [[self header] setTabScrollDelegate:self];
   
   [[self view] addSubview:[self header]];

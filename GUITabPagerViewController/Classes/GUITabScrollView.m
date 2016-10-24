@@ -20,7 +20,7 @@
 
 @implementation GUITabScrollView
 
-- (instancetype)initWithFrame:(CGRect)frame tabViews:(NSArray *)tabViews tabBarHeight:(CGFloat)height tabColor:(UIColor *)color backgroundColor:(UIColor *)backgroundColor {
+- (instancetype)initWithFrame:(CGRect)frame tabViews:(NSArray *)tabViews tabBarHeight:(CGFloat)height tabColor:(UIColor *)color backgroundColor:(UIColor *)backgroundColor showBottomLine:(BOOL)showBottomLine {
   self = [super initWithFrame:frame];
   
   if (self) {
@@ -88,6 +88,11 @@
                                                                         options:0
                                                                         metrics:@{@"height": @(height - 2.0f)}
                                                                           views:@{@"S": bottomLine}]];
+      
+      
+      bottomLine.hidden = !showBottomLine;
+      
+      
     UIView *tabIndicator = [UIView new];
     [tabIndicator setTranslatesAutoresizingMaskIntoConstraints:NO];
     [contentView addSubview:tabIndicator];

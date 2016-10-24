@@ -75,6 +75,11 @@
   return [UIColor colorWithRed:1.0f green:0.8f blue:0.0f alpha:1.0f];
 }
 
+-(BOOL)showBottomLine
+{
+    return YES;
+}
+
 #pragma mark - Tab Pager Delegate
 
 - (void)tabPager:(GUITabPagerViewController *)tabPager willTransitionToTabAtIndex:(NSInteger)index {
